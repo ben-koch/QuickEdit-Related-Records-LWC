@@ -1,0 +1,89 @@
+<template>
+    <div if:false={isLoaded}>
+        <lightning-card>
+            <lightning-spinner
+            variant="brand"
+            size="large">
+            </lightning-spinner>
+        </lightning-card>
+    </div>
+    <div if:true={isLoaded}>
+    <lightning-card>
+        <template if:true={admDocs}> 
+            <lightning-card title="Admissions Documents">
+                <template for:each={admDocs} for:item="doc">
+                    <lightning-record-edit-form key={doc.Id} record-id={doc.Id} object-api-name="Admissions_Document__c" onsuccess={showSuccessToast}>
+                    <div class="slds-grid">
+                        <div class="slds-col slds-size_1-of-4 slds-p-horizontal_medium">
+                            <lightning-output-field field-name="Document_Name__c">
+                            </lightning-output-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-4 slds-p-horizontal_medium">
+                            <lightning-input-field field-name="Document_Status__c">
+                            </lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-4 slds-p-horizontal_medium">
+                            <lightning-input-field field-name="Date_Recieved__c">
+                            </lightning-input-field>
+                        </div>             
+                        <div class="slds-col slds-size_1-of-4 slds-p-horizontal_medium slds-p-top_large">   
+                            <lightning-button variant="brand" label="Update Record" title="Update record" type="submit" class="slds-m-left_small"></lightning-button>
+                        </div>
+                </div>
+                    </lightning-record-edit-form>
+                </template>
+            </lightning-card>
+        </template>
+        <template if:true={testScores}> 
+            <lightning-card title="Test Scores">
+                <template for:each={testScores} for:item="score">
+                    <lightning-record-edit-form key={score.Id} record-id={score.Id} object-api-name="hed__Test_Score__c" onsuccess={showSuccessToast}>
+                    <div class="slds-grid">
+                        <div class="slds-col slds-size_1-of-4 slds-p-horizontal_medium">
+                            <lightning-output-field field-name="Test_Name__c">
+                            </lightning-output-field>                        
+                        </div>
+                        <div class="slds-col slds-size_1-of-4 slds-p-horizontal_medium">
+                            <lightning-input-field field-name="Document_Status__c">
+                            </lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-4 slds-p-horizontal_medium">
+                            <lightning-input-field field-name="Date_Received__c">
+                            </lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-4 slds-p-horizontal_medium slds-p-top_large">   
+                            <lightning-button variant="brand" label="Update Record" title="Update record" type="submit" class="slds-m-left_small"></lightning-button>
+                        </div>
+                    </div>
+                    </lightning-record-edit-form>
+                </template>
+            </lightning-card>
+        </template> 
+        <template if:true={eduHistories}> 
+            <lightning-card title="Education Histories">
+                <template for:each={eduHistories} for:item="edu">
+                    <lightning-record-edit-form key={edu.Id} record-id={edu.Id} object-api-name="Education_History__c" onsuccess={showSuccessToast}>
+                    <div class="slds-grid">
+                        <div class="slds-col slds-size_1-of-4 slds-p-horizontal_medium">
+                            <lightning-output-field field-name="School_Name__c">
+                            </lightning-output-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-4 slds-p-horizontal_medium">
+                            <lightning-input-field field-name="Document_Status__c">
+                            </lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-4 slds-p-horizontal_medium">
+                            <lightning-input-field field-name="Date_Received__c">
+                            </lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-4 slds-p-horizontal_medium slds-p-top_large">   
+                            <lightning-button variant="brand" label="Update Record" title="Update record" type="submit" class="slds-m-left_small"></lightning-button>
+                        </div>
+                    </div>                    
+                </lightning-record-edit-form>
+                </template>
+            </lightning-card>
+        </template>  
+    </lightning-card>
+    </div>
+</template>
